@@ -12,23 +12,23 @@ public class FramesHandles {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://jqueryui.com/droppable/");
-		
-		//Check Frame Size and move to the required frame
+
+		// Check Frame Size and move to the required frame
 		int frameSize = driver.findElements(By.tagName("iframe")).size();
 		System.out.println(frameSize);
 		WebElement frameLoc = driver.findElement(By.className("demo-frame"));
 		driver.switchTo().frame(frameLoc);
-		
-		//Perform drag and drop action with mouse
+
+		// Perform drag and drop action with mouse
 		Actions dragAndDropAct = new Actions(driver);
 		WebElement source = driver.findElement(By.id("draggable"));
 		WebElement target = driver.findElement(By.id("droppable"));
 		dragAndDropAct.dragAndDrop(source, target).build().perform();
-		
-		//Switch back to main window
+
+		// Switch back to main window
 		driver.switchTo().defaultContent();
 		driver.findElement(By.linkText("Draggable")).click();
-		
+
 	}
 
 }
