@@ -41,11 +41,11 @@ public class ProductCatalogue extends AbstractComponents {
 		return prodName;
 	}
 
-	public void addProductToCart(String productName) {
+	public void addProductToCart(String productName) throws InterruptedException {
 		WebElement prod = getProductName(productName);
 		prod.findElement(addToCart).click();
 		waitTillElementAppear(toastMsg);
-		waitUnitlElementDisappear(spinner);
+		waitUnitlElementDisappear();
 
 	}
 

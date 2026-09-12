@@ -29,10 +29,12 @@ public class LandingPage extends AbstractComponents {
 	@FindBy(id = "login")
 	WebElement login;
 
-	public void loginPage(String username, String password) {
+	public ProductCatalogue loginPage(String username, String password) {
 		userEmail.sendKeys(username);
 		userPassword.sendKeys(password);
 		login.click();
+		ProductCatalogue productCat = new ProductCatalogue(driver);
+		return productCat;
 	}
 
 	public void goToUrl() {
