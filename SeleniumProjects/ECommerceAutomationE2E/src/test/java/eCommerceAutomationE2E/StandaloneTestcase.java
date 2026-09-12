@@ -37,16 +37,11 @@ public class StandaloneTestcase {
 		List<WebElement> allProducts = productCat.getProduct();
 		
 
-		// Iterate through all the product and get desired product
-		WebElement prod = allProducts.stream()
-				.filter(product -> product.findElement(By.cssSelector(".mb-3 h5")).getText().equals(productName))
-				.findFirst().orElse(null);
+		// Iterate through all the product and add product to cart
+		productCat.addProductToCart(productName);
 
 		// Click Add to cart and wait till the product is added to cart.
-		prod.findElement(By.cssSelector(".card-body button:last-of-type")).click();
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("#toast-container")));
-		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".ng-animating"))));
-
+		
 		// Go to cart page and check if product is added
 		driver.findElement(By.cssSelector("[routerlink*='cart']")).click();
 		List<WebElement> cartProd = driver.findElements(By.cssSelector(".cartSection h3"));
