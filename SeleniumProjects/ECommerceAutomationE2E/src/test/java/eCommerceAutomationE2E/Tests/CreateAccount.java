@@ -1,4 +1,4 @@
-package eCommerceAutomationE2E;
+package eCommerceAutomationE2E.Tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

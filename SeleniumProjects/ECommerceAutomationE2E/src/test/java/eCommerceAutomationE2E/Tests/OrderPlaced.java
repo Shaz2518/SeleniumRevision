@@ -1,4 +1,4 @@
-package eCommerceAutomationE2E;
+package eCommerceAutomationE2E.Tests;
 
 import java.time.Duration;
 import java.util.List;

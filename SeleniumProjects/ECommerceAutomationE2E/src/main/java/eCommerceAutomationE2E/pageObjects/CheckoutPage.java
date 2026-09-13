@@ -28,16 +28,20 @@ public class CheckoutPage extends AbstractComponents {
 	
 	By dropDownOp = By.cssSelector(".ta-results");
 	
-	public OrderConfirmPage addCountryCheckout()
+	public void addCountryCheckout(String countryName)
 	{
 		Actions act = new Actions(driver);
-		act.sendKeys(dropDownValue, "india").build().perform();
+		act.sendKeys(dropDownValue, countryName).build().perform();
 		waitTillElementAppear(dropDownOp);
 		dropDownValueSelected.click();
-		checkoutBtn.click();
-		OrderConfirmPage confirm = new OrderConfirmPage(driver);
-		return confirm;
 		
+		
+	}
+	
+	public OrderConfirmPage placeOrder()
+	{
+		checkoutBtn.click();
+		return new OrderConfirmPage(driver);
 	}
 
 }
