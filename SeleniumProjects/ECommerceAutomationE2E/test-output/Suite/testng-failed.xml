@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]">
-  <test thread-count="5" name="ErrorValidation Test(failed)">
+<suite parallel="tests" name="Failed suite [Suite]">
+  <test thread-count="5" parallel="tests" name="StandaloneTestcase Test(failed)">
+    <groups>
+      <run>
+        <include name="OrderPurchase"/>
+      </run>
+    </groups>
     <classes>
-      <class name="eCommerceAutomationE2E.Tests.ErrorValidation">
+      <class name="eCommerceAutomationE2E.Tests.StandaloneTestcase">
         <methods>
           <include name="closeBrowser"/>
+          <include name="SubmitOrder" invocation-numbers="0 1"/>
           <include name="loginLandingPage"/>
-          <include name="LoginErrorValidation"/>
         </methods>
-      </class> <!-- eCommerceAutomationE2E.Tests.ErrorValidation -->
+      </class> <!-- eCommerceAutomationE2E.Tests.StandaloneTestcase -->
     </classes>
-  </test> <!-- ErrorValidation Test(failed) -->
+  </test> <!-- StandaloneTestcase Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

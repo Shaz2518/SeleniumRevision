@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="tests" name="Suite">
+	<groups>
+		<run>
+			<include name="OrderPurchase" />
+	    </run>
+	</groups>
+	<test thread-count="5" name="StandaloneTestcase Test">
+		<classes>
+			<class name="eCommerceAutomationE2E.Tests.StandaloneTestcase" />
+		</classes>
+	</test> <!--
+	Test -->
+	<test thread-count="5" name="ErrorValidation Test">
+		<classes>
+			<class name="eCommerceAutomationE2E.Tests.ErrorValidation" />
+		</classes>
+	</test> <!--
+	Test -->
+</suite> <!--
+Suite -->

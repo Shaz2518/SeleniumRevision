@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="eCommerceAutomationE2E.Tests.ErrorValidation">
+      <class name="eCommerceAutomationE2E.Tests.StandaloneTestcase">
         <methods>
+          <include name="OrderHistoryTest"/>
           <include name="closeBrowser"/>
+          <include name="SubmitOrder"/>
           <include name="loginLandingPage"/>
-          <include name="LoginErrorValidation"/>
         </methods>
-      </class> <!-- eCommerceAutomationE2E.Tests.ErrorValidation -->
+      </class> <!-- eCommerceAutomationE2E.Tests.StandaloneTestcase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
