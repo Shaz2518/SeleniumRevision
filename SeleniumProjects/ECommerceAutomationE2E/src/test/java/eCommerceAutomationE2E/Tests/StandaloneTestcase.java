@@ -2,19 +2,20 @@ package eCommerceAutomationE2E.Tests;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.Test;
-
 import eCommerceAutomationE2E.TestComponents.BaseTests;
 import eCommerceAutomationE2E.pageObjects.CartPage;
 import eCommerceAutomationE2E.pageObjects.CheckoutPage;
-import eCommerceAutomationE2E.pageObjects.LandingPage;
 import eCommerceAutomationE2E.pageObjects.OrderConfirmPage;
 import eCommerceAutomationE2E.pageObjects.OrderPage;
 import eCommerceAutomationE2E.pageObjects.ProductCatalogue;
@@ -47,6 +48,15 @@ public class StandaloneTestcase extends BaseTests {
 		OrderPage ordersPage = productCatalogue.goToOrdersPage();
 		Assert.assertTrue(ordersPage.orderDisplay(productName));
 
+	}
+	
+	public String getScreenshot(String filePath) throws IOException
+	{
+		TakesScreenshot screenShot = (TakesScreenshot) driver;
+		File source = screenShot.getScreenshotAs(OutputType.FILE);
+		File fileName = new File(System.getProperty("user.dir") + "//reports//" + filePath + ".png");
+		FileUtils.copyFile(source, fileName);
+		return System.getProperty("user.dir") + "//reports//" + filePath + ".png";
 	}
 	
 	@DataProvider
