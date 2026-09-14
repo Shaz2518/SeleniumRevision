@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import eCommerceAutomationE2E.pageObjects.CartPage;
+import eCommerceAutomationE2E.pageObjects.OrderPage;
 
 public class AbstractComponents {
 
@@ -23,6 +24,9 @@ public class AbstractComponents {
 	
 	@FindBy(css="[routerlink*='cart']")
 	WebElement addToCartClick;
+	
+	@FindBy(css="[routerlink*='myorders']")
+	WebElement orderHeader;
 
 	public void waitTillElementAppear(By findBy) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -47,6 +51,13 @@ public class AbstractComponents {
 		addToCartClick.click();
 		CartPage cartPage = new CartPage(driver);
 		return cartPage;
+	}
+	
+	public OrderPage goToOrdersPage()
+	{
+		orderHeader.click();
+		OrderPage orderPage = new OrderPage(driver);
+		return orderPage;
 	}
 
 }

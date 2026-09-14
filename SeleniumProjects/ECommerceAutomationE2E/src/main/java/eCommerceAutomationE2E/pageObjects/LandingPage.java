@@ -29,7 +29,7 @@ public class LandingPage extends AbstractComponents {
 	@FindBy(id = "login")
 	WebElement login;
 	
-	@FindBy(css = "[class*='flyOut']")
+	@FindBy(css = "[class*='flyInOut']")
 	WebElement errorMessage;
 
 	public ProductCatalogue loginPage(String username, String password) {

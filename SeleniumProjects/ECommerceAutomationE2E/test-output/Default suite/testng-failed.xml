@@ -5,9 +5,9 @@
     <classes>
       <class name="eCommerceAutomationE2E.Tests.ErrorValidation">
         <methods>
-          <include name="SubmitOrder"/>
           <include name="closeBrowser"/>
           <include name="loginLandingPage"/>
+          <include name="LoginErrorValidation"/>
         </methods>
       </class> <!-- eCommerceAutomationE2E.Tests.ErrorValidation -->
     </classes>
