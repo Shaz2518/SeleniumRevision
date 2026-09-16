@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -47,17 +49,26 @@ public class BaseTests {
 
 	}
 
-		public List<HashMap<String, String>> getJSONData(String filePath) throws IOException {
-		
-		//Convert JSON To String
+		public String getScreenshot(String filePath, WebDriver driver) throws IOException {
+		TakesScreenshot screenShot = (TakesScreenshot) driver;
+		File source = screenShot.getScreenshotAs(OutputType.FILE);
+		File fileName = new File(System.getProperty("user.dir") + "//reports//" + filePath + ".png");
+		FileUtils.copyFile(source, fileName);
+		return System.getProperty("user.dir") + "//reports//" + filePath + ".png";
+	}
+
+	public List<HashMap<String, String>> getJSONData(String filePath) throws IOException {
+
+		// Convert JSON To String
 		String fileDate = FileUtils.readFileToString(new File(filePath), StandardCharsets.UTF_8);
-		
-		//Convert JSON to HashMap - Jackson DataBind
+
+		// Convert JSON to HashMap - Jackson DataBind
 		ObjectMapper mapper = new ObjectMapper();
-		List<HashMap<String,String>> data = mapper.readValue(fileDate, new TypeReference<List<HashMap<String,String>>>() {
-		});
+		List<HashMap<String, String>> data = mapper.readValue(fileDate,
+				new TypeReference<List<HashMap<String, String>>>() {
+				});
 		return data;
-		}
+	}
 
 	@BeforeMethod(alwaysRun = true)
 	public LandingPage loginLandingPage() throws IOException {

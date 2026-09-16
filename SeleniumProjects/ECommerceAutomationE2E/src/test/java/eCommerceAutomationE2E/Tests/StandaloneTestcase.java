@@ -3,14 +3,10 @@ package eCommerceAutomationE2E.Tests;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import eCommerceAutomationE2E.TestComponents.BaseTests;
@@ -21,12 +17,12 @@ import eCommerceAutomationE2E.pageObjects.OrderPage;
 import eCommerceAutomationE2E.pageObjects.ProductCatalogue;
 
 public class StandaloneTestcase extends BaseTests {
-	//String productName = "ZARA COAT 3";
+	String productName = "ZARA COAT 3";
 
 	@Test(dataProvider="getData" , groups="OrderPurchase")
 	public void SubmitOrder(HashMap<String,String> input) throws IOException, InterruptedException {
 
-		//String productName = "ZARA COAT 3";
+	
 		
 		ProductCatalogue productCat = landPage.loginPage(input.get("userEmail"), input.get("userPass"));
 		List<WebElement> allProduct = productCat.getProduct();
@@ -43,21 +39,14 @@ public class StandaloneTestcase extends BaseTests {
 	}
 
 	@Test(dependsOnMethods = { "SubmitOrder" })
-	public void OrderHistoryTest(String productName) {
+	public void OrderHistoryTest() {
 		ProductCatalogue productCatalogue = landPage.loginPage("demonslayer@gmail.com", "DemonSlayer123");
 		OrderPage ordersPage = productCatalogue.goToOrdersPage();
 		Assert.assertTrue(ordersPage.orderDisplay(productName));
 
 	}
 	
-	public String getScreenshot(String filePath) throws IOException
-	{
-		TakesScreenshot screenShot = (TakesScreenshot) driver;
-		File source = screenShot.getScreenshotAs(OutputType.FILE);
-		File fileName = new File(System.getProperty("user.dir") + "//reports//" + filePath + ".png");
-		FileUtils.copyFile(source, fileName);
-		return System.getProperty("user.dir") + "//reports//" + filePath + ".png";
-	}
+	
 	
 	@DataProvider
 	public Object[][] getData() throws IOException {
