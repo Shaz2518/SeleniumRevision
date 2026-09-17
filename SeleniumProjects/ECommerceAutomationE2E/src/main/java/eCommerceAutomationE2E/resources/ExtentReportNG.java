@@ -1,7 +1,5 @@
 package eCommerceAutomationE2E.resources;
 
-import org.testng.annotations.Test;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 

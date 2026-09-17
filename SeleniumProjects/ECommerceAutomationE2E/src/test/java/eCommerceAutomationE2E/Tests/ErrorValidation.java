@@ -2,8 +2,6 @@ package eCommerceAutomationE2E.Tests;
 
 import org.testng.annotations.Test;
 import java.io.IOException;
-import java.util.List;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import eCommerceAutomationE2E.TestComponents.BaseTests;
 import eCommerceAutomationE2E.pageObjects.CartPage;
@@ -26,7 +24,7 @@ public class ErrorValidation extends BaseTests {
 	public void productErrorValidation() throws InterruptedException
 	{
 		ProductCatalogue productCat = landPage.loginPage("demonslayer@gmail.com", "DemonSlayer123");
-		List<WebElement> allProduct = productCat.getProduct();
+		//List<WebElement> allProduct = productCat.getProduct();
 		productCat.addProductToCart(productName);
 		CartPage cartPage = productCat.goToCartPage();
 		boolean match = cartPage.checkIfProductInCart("ZARA COAT 2");

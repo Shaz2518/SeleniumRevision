@@ -2,12 +2,9 @@ package eCommerceAutomationE2E.Tests;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import eCommerceAutomationE2E.TestComponents.BaseTests;
 import eCommerceAutomationE2E.pageObjects.CartPage;
@@ -25,7 +22,7 @@ public class StandaloneTestcase extends BaseTests {
 	
 		
 		ProductCatalogue productCat = landPage.loginPage(input.get("userEmail"), input.get("userPass"));
-		List<WebElement> allProduct = productCat.getProduct();
+		//List<WebElement> allProduct = productCat.getProduct();
 		productCat.addProductToCart(input.get("productName"));
 		CartPage cartPage = productCat.goToCartPage();
 		boolean match = cartPage.checkIfProductInCart(input.get("productName"));
