@@ -110,7 +110,7 @@
 						<configuration>
 							<suiteXmlFiles>
 								<suiteXmlFile>TestSuits/OrderPurchase.xml</suiteXmlFile>
-							</suiteXmlFiles>
+						</suiteXmlFiles>
 						</configuration>
 					</plugin>
 				</plugins>

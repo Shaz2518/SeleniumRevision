@@ -14,6 +14,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -33,23 +35,26 @@ public class BaseTests {
 				+ "\\src\\main\\java\\eCommerceAutomationE2E\\resources\\GlobalData.properties");
 		property.load(file);
 
-		String browserName = property.getProperty("browser");
+		String browserName = System.getProperty("browser") != null ? System.getProperty("browser")
+				: property.getProperty("browser");
 		if (browserName.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 		} else if (browserName.equalsIgnoreCase("firefox")) {
-			// Firefox invoke code
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
 		} else if (browserName.equalsIgnoreCase("edge")) {
-			// Edge invoke code
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
 		}
-
+		System.out.println("Selected Browser = " + browserName);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
 		return driver;
 
 	}
 
-		public String getScreenshot(String filePath, WebDriver driver) throws IOException {
+	public String getScreenshot(String filePath, WebDriver driver) throws IOException {
 		TakesScreenshot screenShot = (TakesScreenshot) driver;
 		File source = screenShot.getScreenshotAs(OutputType.FILE);
 		File fileName = new File(System.getProperty("user.dir") + "//reports//" + filePath + ".png");

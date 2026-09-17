@@ -17,7 +17,8 @@ public class ErrorValidation extends BaseTests {
 		
 		LandingPage landPage = loginLandingPage();
 		landPage.loginPage("demons@gmail.com", "DemonSlayer12");
-		Assert.assertEquals(landPage.errorMsg(), "Incorrect  or password.");
+		Assert.assertEquals(landPage.errorMsg(), "Incorrect email or password.");
+		//Assert.assertEquals(landPage.errorMsg(), "Incorrect email password.");
 	}
 	
 	@Test
